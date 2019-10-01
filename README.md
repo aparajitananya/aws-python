@@ -11,3 +11,4 @@ Current Webotron features:
 - List buckets in an account
 - List contents of a bucket
 - Create and set up a bucket as a hosted website
+- Sync directory tree to bucket
