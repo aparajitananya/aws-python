@@ -11,6 +11,7 @@ pydocstyle = "*"
 [packages]
 boto3 = "*"
 click = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.7"
