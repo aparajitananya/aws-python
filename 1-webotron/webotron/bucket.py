@@ -11,7 +11,8 @@ from botocore.exceptions import ClientError
 class BucketManager:
     def __init__(self, session):
         """Create a BucketManager object."""
-        self.s3 = session.resource('s3')
+        self.session = session
+        self.s3 = self.session.resource('s3')
 
     def all_buckets(self):
         """Get an iterator for all buckets."""
@@ -26,9 +27,17 @@ class BucketManager:
         s3_bucket = None
 
         try:
-            s3_bucket = self.s3.create_bucket(
-                Bucket=bucket_name
-            )
+            if self.session.region_name == 'us-east-1':
+                s3_bucket = self.s3.create_bucket(
+                    Bucket=bucket_name
+                )
+            else:
+                s3_bucket = self.s3.create_bucket(
+                    Bucket=bucket_name,
+                    CreateBucketConfiguration={
+                        'LocationConstraint': self.session.region_name
+                    }
+                )
         except ClientError as e:
             if e.response['Error']['Code'] == 'BucketAlreadyOwnedByYou':
                 s3_bucket = self.s3.Bucket(bucket_name)
