@@ -9,7 +9,7 @@ from pathlib import Path
 
 from botocore.exceptions import ClientError
 
-import util
+from webotron import util
 
 from hashlib import md5
 from pprint import pprint
