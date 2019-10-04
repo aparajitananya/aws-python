@@ -9,7 +9,7 @@ Webotron automates the process of deploying static websites
     - Sets up static website hosting
     - Deploys local files
 - Configure DNS with R53
-- Configure a CND and SSL with Cloudfront
+- Configure a CDN and SSL with Cloudfront
 """
 
 import boto3
