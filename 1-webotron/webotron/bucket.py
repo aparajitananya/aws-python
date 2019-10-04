@@ -117,7 +117,7 @@ class BucketManager:
 
     @staticmethod
     def hash_data(data):
-        """Generate md5 has for data."""
+        """Generate md5 hash for data."""
         hash = md5()
         hash.update(data)
 
